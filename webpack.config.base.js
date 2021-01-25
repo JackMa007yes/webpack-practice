@@ -14,5 +14,37 @@ module.exports = {
             template:'src/assets/index.html'  //生成html的模板
         }),
     ],
+    module:{
+        rules:[  
+            {  //加载图片
+                test:/\.(png|jpg|svg|gif)$/,
+                use:['file-loader']   //把文件变成文件路径 可以是其他格式的文件
+            },
+            { //加载stylus
+                test:/\.styl$/,
+                use:['style-loader','css-loader',
+                {loader:'stylus-loader'}
+            ]
+            },
+            {    //加载less
+                test:/\.less$/,
+                use:['style-loader','css-loader',
+                {loader:'less-loader'}
+            ]
+            },
+            {   //以下为加载scss
+                test:/\.scss$/i,
+                use:[
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader:'sass-loader',
+                        options:{implementation:require('dart-sass')}
+                    }
+                   
+                ]
+            }
+        ]
+    }
 }
 

@@ -20,6 +20,7 @@ module.exports = {
     ],
     module:{   //下面加一个css文件
         rules:[
+            ...base.module.rules,
             {
                 test:/\.css$/i,   //正则表达式 选择css结尾的文件
                 use:[
