@@ -1,20 +1,18 @@
-var path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')   //生成一个html标签
-const { Template } = require('webpack')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')   //生成html的插件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin') //生成一个单独的css文件
+
+const base = require('./webpack.config.base')
 
 
 module.exports = {
-    mode:'development',   //开发者模式 内容更多，还有一个用户的模式
+    ...base,
     devtool:'inline-source-map',   //这几行是为了使用webpack-dev-server
     devServer: {                    //这几行是为了使用webpack-dev-server
         contentBase:'./dist'
     },
-    entry:'./src/index.js',   //输入的文件  一个js文件
-    output:{filename:'[name].[contenthash].js'},  //输出js文件的名字 哈希表 可用于更新文件
-    plugins:[new HtmlWebpackPlugin({
-        title:'shishikan',  //生成html的title
-        template:'src/assets/index.html'  //生成html的模板
-    })],
+    mode:'development',   //开发者模式 内容更多，还有一个用户的模式
+  
     module:{   //下面加一个css文件
         rules:[
             {
