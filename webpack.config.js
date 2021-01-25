@@ -5,6 +5,10 @@ const { Template } = require('webpack')
 
 module.exports = {
     mode:'development',   //开发者模式 内容更多，还有一个用户的模式
+    devtool:'inline-source-map',   //这几行是为了使用webpack-dev-server
+    devServer: {                    //这几行是为了使用webpack-dev-server
+        contentBase:'./dist'
+    },
     entry:'./src/index.js',   //输入的文件  一个js文件
     output:{filename:'[name].[contenthash].js'},  //输出js文件的名字 哈希表 可用于更新文件
     plugins:[new HtmlWebpackPlugin({

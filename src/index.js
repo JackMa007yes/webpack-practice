@@ -1,3 +1,3 @@
 import x from './x.js'
-import style from './x.css'
+import './x.css'
 console.log(x)
